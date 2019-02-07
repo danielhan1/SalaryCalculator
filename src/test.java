@@ -54,6 +54,15 @@ public class test
 			lbl3.setBounds(190, 140, 200, 30);
 			myFrame.add(lbl3);
 			
+			button.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+				
+				}
+			}
+	);
+			
 			
 			myFrame.setVisible(true);
 			myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
