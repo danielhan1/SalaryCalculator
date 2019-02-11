@@ -41,28 +41,66 @@ public class test
 			tf2.setBounds(100, 65, 150, 30);
 			myFrame.add(tf2);
 			
-			JCheckBox check = new JCheckBox("Full Time");
-			check.setBounds(15, 115, 130, 30);
-			myFrame.add(check);
 			
-			JButton button = new JButton("Calculate");
-			button.setSize(new Dimension(130,30));
-			button.setLocation(new Point(15, 150));
-			myFrame.add(button);
+			
 			
 			JLabel lbl3 = new JLabel("Annual Salary: $");
 			lbl3.setBounds(190, 140, 200, 30);
 			myFrame.add(lbl3);
 			
+			JButton button = new JButton("Calculate");
+			button.setSize(new Dimension(130,30));
+			button.setLocation(new Point(15, 150));
 			button.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-				
+					String hours = tf1.getText();
+
+					String hw = tf2.getText();
+					
+					double hourly = Double.parseDouble(hours);
+					double hourweek = Double.parseDouble(hw);
+
+					double salary = hourly * hourweek * 52;
+					lbl3.setText("Annual Salary: $" + salary);
+					
 				}
 			}
 	);
+	
+	
+			myFrame.add(button);
 			
+			JCheckBox check = new JCheckBox("Full Time");
+			check.setBounds(15, 115, 130, 30);
+			myFrame.add(check);
+			check.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					
+					button.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent f)
+						{
+							String hours = tf1.getText();
+							double hw = 40;
+							
+							double hourly = Double.parseDouble(hours);
+							
+							double salary = hourly * 40 * 52;
+							
+							lbl3.setText("Annual Salary: $" + salary);
+						}
+					}
+			);
+					
+					
+				}
+			}
+	);
 			
 			myFrame.setVisible(true);
 			myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
